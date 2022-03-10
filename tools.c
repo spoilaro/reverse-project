@@ -7,11 +7,10 @@ Node *read_file(char *filename)
     // https://stackoverflow.com/questions/3501338/c-read-file-line-by-line
 
     FILE *fp;
-    char *line = NULL;
-    size_t len = 0;
-    size_t read;
+    char line[256];
 
     Node *head = NULL;
+    Node *current = NULL;
 
     fp = fopen(filename, "r");
     if (fp == NULL)
@@ -20,15 +19,30 @@ Node *read_file(char *filename)
         exit(1);
     }
 
-    while ((read = getline(&line, &len, fp)) != -1)
+    while (fgets(line, sizeof(line), fp))
     {
-        head = add_node(head, line);
+        Node *new = (Node *)malloc(sizeof(Node));
+        new->line = line;
+        new->next = NULL;
+
+        if (head == NULL)
+        {
+            current = head = new;
+        }
+        else
+        {
+            current = current->next = new;
+        }
     }
 
     fclose(fp);
 
-    print_nodes(head);
-    return head;
+    for (current = head; current; current = current->next)
+    {
+        printf("%s", current->line);
+    }
+
+    // print_nodes(head);
 }
 
 Node *new_node(char *line)
