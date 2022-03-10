@@ -1,10 +1,13 @@
 
 
-typedef struct Node{
+typedef struct Node
+{
 
     char *line;
     struct Node *next;
 } Node;
 
-void read_file(char *filename, Node *head);
+Node *read_file(char *filename);
 Node *add_node(Node *head, char line[255]);
+Node *new_node(char *line);
+void print_nodes(Node *head);

@@ -3,14 +3,11 @@
 
 #include "tools.h"
 
+int main(int argc, char **argv)
+{
 
-int main(){
-
-    Node *head;
-    head = NULL;
-
-    read_file("input.txt", head);
-
+    read_file("input.txt");
+    // print_nodes(head);
 
     return 0;
 }
