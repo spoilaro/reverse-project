@@ -22,7 +22,7 @@ Node *read_file(char *filename)
     while (fgets(line, sizeof(line), fp))
     {
         Node *new = (Node *)malloc(sizeof(Node));
-        new->line = line;
+        new->line = strdup(line);
         new->next = NULL;
 
         if (head == NULL)
