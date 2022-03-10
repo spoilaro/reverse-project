@@ -1,16 +1,14 @@
 #include "tools.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-Node *read_file(char *filename)
+Node *read_file(char *filename, Node *head)
 {
     // https://stackoverflow.com/questions/3501338/c-read-file-line-by-line
 
     FILE *fp;
     char line[256];
-
-    Node *head = NULL;
-    Node *current = NULL;
 
     fp = fopen(filename, "r");
     if (fp == NULL)
@@ -37,12 +35,16 @@ Node *read_file(char *filename)
 
     fclose(fp);
 
+<<<<<<< HEAD
     for (current = head; current; current = current->next)
     {
         printf("%s", current->line);
     }
 
     // print_nodes(head);
+=======
+    return head;
+>>>>>>> fixed_list
 }
 
 Node *new_node(char *line)
@@ -53,7 +55,7 @@ Node *new_node(char *line)
         perror("Could not allocate memory for node");
     }
 
-    node->line = line;
+    node->line = strdup(line);
     node->next = NULL;
 
     return node;
@@ -62,15 +64,7 @@ Node *new_node(char *line)
 Node *add_node(Node *head, char *line)
 {
     Node *new = new_node(line);
-
-    if (head != NULL)
-    {
-
-        printf("Head is %s", head->line);
-    }
-    printf("Next is %s", new->line);
     new->next = head;
-
     return new;
 }
 
