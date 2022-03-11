@@ -1,4 +1,4 @@
 CC=gcc
 
-main: main.o tools.o
-	$(CC) -std=c99 -Wall -o main main.o tools.o
+reverse: main.o tools.o
+	$(CC) -std=c99 -Wall -o reverse main.o tools.o
