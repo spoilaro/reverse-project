@@ -33,6 +33,12 @@ int main(int argc, char **argv) {
             print_nodes(head, false);
             break;
         case 3:
+
+            if (strcmp(argv[1], argv[2]) == 0) {
+                fprintf(stderr, "Input and output file must differ");
+                exit(1);
+            }
+
             head = read_file(argv[1], head);
             write_file(argv[2], head);
             break;
@@ -42,7 +48,6 @@ int main(int argc, char **argv) {
             break;
     }
 
-    // TODO: Free nodes
-
+    free_nodes(head);
     return 0;
 }

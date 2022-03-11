@@ -50,6 +50,8 @@ Node *add_node(Node *head, char *line) {
 void print_nodes(Node *head, bool new_lines)
 
 {
+    printf("\n");
+
     while (head != NULL) {
         printf("%s", head->line);
 
@@ -101,5 +103,14 @@ void write_file(char *filename, Node *head) {
     while (head != NULL) {
         fprintf(fp, "%s", head->line);
         head = head->next;
+    }
+}
+
+void free_nodes(Node *head) {
+    Node *tmp = NULL;
+    while (head != NULL) {
+        tmp = head;
+        head = head->next;
+        free(tmp);
     }
 }

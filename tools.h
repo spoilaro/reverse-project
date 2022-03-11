@@ -13,3 +13,4 @@ Node *new_node(char *line);
 void print_nodes(Node *head, bool new_lines);
 Node *dynamic_input(char *line, Node *head);
 void write_file(char *filename, Node *head);
+void free_nodes(Node *head);
