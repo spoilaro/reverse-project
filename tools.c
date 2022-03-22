@@ -24,6 +24,7 @@ Node *read_file(char *filename, Node *head) {
     }
 
     fclose(fp);
+    free(line);
 
     return head;
 }
@@ -111,6 +112,7 @@ void free_nodes(Node *head) {
     while (head != NULL) {
         tmp = head;
         head = head->next;
+        free(tmp->line);
         free(tmp);
     }
 }
